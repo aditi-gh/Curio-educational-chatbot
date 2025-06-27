@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome-container">
+    <h2>Welcome to the Curio Chatbot</h2>
+    <p>This chatbot can help you with various educational topics including math, science, history, and literature.</p>
+    {% if not current_user.is_authenticated %}
+        <div class="auth-options">
+            <a href="{{ url_for('login') }}" class="auth-btn">Login</a>
+            <a href="{{ url_for('register') }}" class="auth-btn">Register</a>
+        </div>
+    {% else %}
+        <div class="chat-redirect">
+            <p>Go to chat to start learning!</p>
+            <a href="{{ url_for('chat') }}" class="chat-btn">Start Chatting</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %} 
